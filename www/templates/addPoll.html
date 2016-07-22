@@ -1,0 +1,129 @@
+<ion-view view-title="<img src='./img/logoTitle.png' style='vertical-align:middle; width:70px;' onClick='getMyPolls()'>" style="background: url('./img/background.png') no-repeat center center fixed; 
+    -webkit-background-size: 110%;
+    -moz-background-size: 110%;
+    -o-background-size: 110%;
+    background-size: 110%;">
+  <ion-content overflow-scroll="false">
+  	<p class="select-images-label" ng-bind="ui.selectImage"></p>
+  	<form name="addPollForm">	
+  	<div class="padding-right-10">
+  		<div class="image-import-button" ng-click="getImageFromGallery()" ng-bind="ui.gallery">
+		</div>
+  		<div class="image-import-button" ng-click="getImageFromCamera()" ng-bind="ui.camera">	 	 
+		</div>
+	</div>
+	
+	<!-- <div class="row photo-gallery-row" style="overflow-x:scroll;
+    white-space:nowrap;"> -->
+    <ion-scroll zooming="true" direction="x" style="width: 100%; height: 140px">
+    	<div id="container" class="row photo-gallery-row">
+	 		<div class="col photo-col" ng-repeat="image in imageSources track by $index">
+	 			<img class="photo-col-content" ng-src="{{image}}">
+	 		</div>
+		</div>
+	</ion-scroll>
+	<p class="select-images-label" ng-bind="ui.selectWhatToRate"></p>
+	<div class="selectwhattorate-line">
+		<select class="selectwhattorate-option" ng-model="selectOptionToRate" ng-change="showSelectValue(selectOptionToRate)">
+			<option value="">select</option>
+			<option ng-bind="ui.appearance" ng-value="ui.appearance"></option>
+			<option ng-bind="ui.bag" ng-value="ui.bag"></option>
+			<option ng-bind="ui.belt" ng-value="ui.belt"></option>
+			<option ng-bind="ui.blouse" ng-value="ui.blouse"></option>
+			<option ng-bind="ui.boots" ng-value="ui.boots"></option>
+			<option ng-bind="ui.boxers" ng-value="ui.boxers"></option>
+			<option ng-bind="ui.bracelet" ng-value="ui.bracelet"></option>
+			<option ng-bind="ui.bras" ng-value="ui.bras"></option>
+			<option ng-bind="ui.cap" ng-value="ui.cap"></option>
+			<option ng-bind="ui.coat" ng-value="ui.coat"></option>
+			<option ng-bind="ui.color" ng-value="ui.color"></option>
+			<option ng-bind="ui.cufflinks" ng-value="ui.cufflinks"></option>
+			<option ng-bind="ui.decors" ng-value="ui.decors"></option>
+			<option ng-bind="ui.design" ng-value="ui.design"></option>
+			<option ng-bind="ui.dress" ng-value="ui.dress"></option>
+			<option ng-bind="ui.earrings" ng-value="ui.earrings"></option>
+			<option ng-bind="ui.glasses" ng-value="ui.glasses"></option>
+			<option ng-bind="ui.gloves" ng-value="ui.gloves"></option>
+			<option ng-bind="ui.hat" ng-value="ui.hat"></option>
+			<option ng-bind="ui.jacket" ng-value="ui.jacket"></option>
+			<option ng-bind="ui.jeans" ng-value="ui.jeans"></option>
+			<option ng-bind="ui.like" ng-value="ui.like"></option>
+			<option ng-bind="ui.look" ng-value="ui.look"></option>
+			<option ng-bind="ui.material" ng-value="ui.material"></option>
+			<option ng-bind="ui.necklace" ng-value="ui.necklace"></option>
+			<option ng-bind="ui.panties" ng-value="ui.panties"></option>
+			<option ng-bind="ui.pants" ng-value="ui.pants"></option>
+			<option ng-bind="ui.polo" ng-value="ui.polo"></option>
+			<option ng-bind="ui.presentation" ng-value="ui.presentation"></option>
+			<option ng-bind="ui.price" ng-value="ui.price"></option>
+			<option ng-bind="ui.purse" ng-value="ui.purse"></option>
+			<option ng-bind="ui.raincoat" ng-value="ui.raincoat"></option>
+			<option ng-bind="ui.ring" ng-value="ui.ring"></option>
+			<option ng-bind="ui.scarf" ng-value="ui.scarf"></option>
+			<option ng-bind="ui.shape" ng-value="ui.shape"></option>
+			<option ng-bind="ui.shirt" ng-value="ui.shirt"></option>
+			<option ng-bind="ui.shoe" ng-value="ui.shoe"></option>
+			<option ng-bind="ui.shorts" ng-value="ui.shorts"></option>
+			<option ng-bind="ui.skirt" ng-value="ui.skirt"></option>
+			<option ng-bind="ui.slippers" ng-value="ui.slippers"></option>
+			<option ng-bind="ui.sneakers" ng-value="ui.sneakers"></option>
+			<option ng-bind="ui.socks" ng-value="ui.socks"></option>
+			<option ng-bind="ui.style" ng-value="ui.style"></option>
+			<option ng-bind="ui.suit" ng-value="ui.suit"></option>
+			<option ng-bind="ui.sweater" ng-value="ui.sweater"></option>
+			<option ng-bind="ui.swimsuit" ng-value="ui.swimsuit"></option>
+			<option ng-bind="ui.tie" ng-value="ui.tie"></option>
+			<option ng-bind="ui.trousers" ng-value="ui.trousers"></option>
+			<option ng-bind="ui.tshirt" ng-value="ui.tshirt"></option>
+			<option ng-bind="ui.turtleneck" ng-value="ui.turtleneck"></option>
+			<option ng-bind="ui.underwear" ng-value="ui.underwear"></option>
+			<option ng-bind="ui.vest" ng-value="ui.vest"></option>
+			<option ng-bind="ui.watch" ng-value="ui.watch"></option>
+		</select>
+		<div class="as-label" ng-bind="ui.as"></div>
+		<div class="z-h-label {{z_h_button_click}}" ng-click="z_h_button_clicked()">0-100</div>
+		<div ng-bind="ui.or"></div>
+		<div class="z-h-label {{y_n_button_click}}" ng-click="y_n_button_clicked()" ng-bind="ui.yn"></div>
+		<div style="float: right;" ng-click="addOptionToRateFromDrop()" ng-bind="ui.add"></div>
+	</div>
+	<p class="select-images-label" ng-bind="ui.orcreatecustomeparameters"></p>
+	<p class="select-images-label small" ng-bind="ui.max15chars"></p>
+	<input type="text" class="custom-field" ng-model="customOptionToRate">
+	
+	<div class="custom-line">
+		<div class="as-label" ng-bind="ui.as"></div>
+		<div class="z-h-label {{b_e_label_click}}" ng-click="b_e_label_clicked()">0-100</div>
+		<div ng-bind="ui.or"></div>
+		<div class="z-h-label {{z_h_label_click}}" ng-click="z_h_label_clicked()" ng-bind="ui.yn"></div>
+		<div class="add-btn" ng-bind="ui.add" ng-click="addOptionToRateFromCustom(customOptionToRate)"></div>
+	</div>
+	<ion-scroll zooming="true" direction="x" style="width: 100%; height: 140px">
+    	<div id="container" class="row setting-row">
+	 		<div class="col setting-col" ng-repeat="setting in rateOptions track by $index">
+	 			<div class="setting-col-content">
+		 			<p ng-bind="setting.name"></p>
+		 			<p ng-bind="setting.value"></p>
+		 		</div>
+	 		</div>
+		</div>
+	</ion-scroll>
+	<div class="select-row">
+		<p class="select-button" ng-click="gotoContact()" ng-bind="ui.select">
+		</p>
+		<p class="select-images-label-inline" ng-bind="ui.whotosendto">
+		</p>
+	</div>
+	<div class="select-name-area">
+		<p class="col-33 select-name-object" ng-repeat="user in usersToInvite track by $index" ng-bind="user.username"></p>
+	</div>
+	<p class="select-images-label" ng-bind="ui.select + ' ' + ui.whotosendto"></p>
+	<div class="time-select-line">
+		<select ng-init="(_Array = []).length = 10;" class="time-select" ng-model="expireTime" ng-change="setExpireTime(expireTime)">
+			<option value="">select</option>
+		    <option ng-repeat="i in _Array track by $index" ng-bind="{{$index + 1}} + ' ' + ui.minutes" ng-value="{{$index + 1}}"></option>
+		</select>
+	</div>
+	<div class="send-button" ng-click="sendPoll()" ng-bind="ui.send"></div>
+	</form>
+  </ion-content>
+</ion-view>

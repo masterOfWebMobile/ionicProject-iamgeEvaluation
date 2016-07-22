@@ -1,0 +1,14 @@
+<ion-view view-title="<img src='./img/logoTitle.png' style='vertical-align:middle; width:70px;' ng-click='getMyPolls(); getToRate();'>" cache-view='false'>
+  <ion-content>
+   	<div class="select-contact-name-title" ng-bind="ui.selectcontactname" ng-click></div>
+
+   	
+   	<div class="invited-line {{contact.isUserOfCurrentGroup == true ? 'selectedInvitedLine' : ''}}" ng-repeat="contact in phoneContacts" ng-click="inviteLineClick(contact)">
+   		<img class="icon-invited" src="./img/icon_peopleInvited.png" ng-show="contact.isUser == true">
+   		<span class="name-invited">{{contact.name.formatted}}</span>
+   		<button class="invite-button" ng-click="shareThroughWhatsapp()" ng-bind="ui.invite" ng-show="contact.isUser == false"></button>
+   	</div>
+   	<div class="send-button" style="margin-top:15px;" ng-bind="ui.save" ng-click="saveGroup()"></div>
+  </ion-content>
+</ion-view>
+ 

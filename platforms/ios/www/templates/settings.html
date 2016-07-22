@@ -1,0 +1,28 @@
+<ion-view view-title="<img src='./img/logoTitle.png' style='vertical-align:middle; width:70px;' ng-click='getMyPolls(); getToRate();'>">
+  <ion-content>
+    <p class="profile-name-label" ng-bind="ui.profilename"></p>
+    <div class="select-container">
+    	<select class="full-width-select" ng-model="currentLanguage" ng-change="changeLanguage(currentLanguage)">
+            <option value="en" ng-bind="ui.english"></option>
+            <option value="ch" ng-bind="ui.chinese"></option>
+        </select>
+    </div>
+    <div class="select-container">
+    	<select class="full-width-select"><option>Age range</option></select>
+    </div>
+    <div class="select-container">
+    	<select class="full-width-select"><option>Location</option></select>
+    </div>
+    <div class="notification-field">
+    	<p style="display: inline-block; margin-top: 10px;" ng-bind="ui.notification"></p>
+    	<div class="switch-button">
+    		<span class="on-button {{on_button_clicked}}" ng-click="onButtonClicked()" ng-bind="ui.on">
+    		</span>
+    		<span class="off-button {{off_button_clicked}}" ng-click="offButtonClicked()" ng-bind="ui.off">
+    		</span>
+    	</div>
+    </div>
+    <div class="about-this-app-button" ng-bind="ui.aboutthisapp">
+    </div>
+  </ion-content>
+</ion-view>
